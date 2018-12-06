@@ -1,32 +1,31 @@
-from selenium import webdriver
-from Steps.SearchSteps import SearchSteps
 import unittest
-
 import HtmlTestRunner
+
+from appium import webdriver
+from appium_page_object.main_page import MainPage
+
 
 class GoogleSearch(unittest.TestCase):
     def setUp(self):
-        driver = webdriver.Chrome()
-        self.steps = SearchSteps(driver)
-        self.steps.open("https://google.com")
+        capabilities = {}
+        capabilities['platformName'] = 'iOS'
+        capabilities['platformVersion'] = '11.4'
+        capabilities['automationName'] = 'XCUITest'
+        capabilities['deviceName'] = 'iPhone 6s'
+        capabilities['app'] = '/Users/admin/Library/Developer/Xcode/DerivedData/UICatalog-afswgjckpnkqtebkoffqyuhqtgqq/Build/Products/Release-iphonesimulator/UICatalog.app'
+        capabilities['newCommandTimeout'] = '0'
+
+        driver = webdriver.Remote('http://192.168.1.153:4723/wd/hub', capabilities)
+
+        main_steps = MainPage(driver)
+        self.alert_views_page = main_steps.open_alert_views_page()
 
     def test_search_python(self):
-        str_request = "python"
-        self.steps.search(str_request)
-        self.assertIn("Welcome to Python.org", self.steps.get_text_first_result())
-
-    def test_search_java(self):
-        str_request = "java"
-        self.steps.search(str_request)
-        self.assertIn(str_request, self.steps.get_text_first_result())
-
-    def test_fail_search(self):
-        str_request = "java"
-        self.steps.search(str_request)
-        self.assertIn("fail_str", self.steps.get_text_first_result())
+        alert_dialog = self.alert_views_page.open_okay_cancel_alert()
+        alert_dialog.cancel_alert()
 
     def tearDown(self):
-        self.steps.quit()
+        self.alert_views_page.quit()
 
 if __name__=='__main__':
     unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='example_dir'))

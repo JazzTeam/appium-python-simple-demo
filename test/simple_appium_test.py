@@ -2,7 +2,7 @@ import unittest
 import HtmlTestRunner
 
 from appium import webdriver
-from AppiumSteps.MainSteps import MainSteps
+from appium_steps.main_page_steps import MainSteps
 
 class ContactIphoneTest(unittest.TestCase):
     def setUp(self):
