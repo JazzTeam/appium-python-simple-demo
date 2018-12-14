@@ -11,3 +11,6 @@ Ensure the capital of a country displayes
     ${alert_dialog}=   Call Method  ${alert_views_page}   open_okay_cancel_alert
     Call Method    ${alert_dialog}   cancel_alert
     quit
+
+
+

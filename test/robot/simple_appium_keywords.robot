@@ -16,7 +16,10 @@ Ensure the capital of a country displayes
 
 *** Keywords ***
 Go to app
-    Open Application    http://192.168.1.153:4723/wd/hub     platformName=iOS    platformVersion=11.4    deviceName=iPhone 6s   automationName=XCUITest     app=/Users/admin/Library/Developer/Xcode/DerivedData/UICatalog-afswgjckpnkqtebkoffqyuhqtgqq/Build/Products/Debug-iphonesimulator/UICatalog.app
+    Open Application    http://192.168.1.126:4723/wd/hub     platformName=iOS    platformVersion=11.4    deviceName=iPhone 6s   automationName=XCUITest     app=/Users/admin/Library/Developer/Xcode/DerivedData/UICatalog-afswgjckpnkqtebkoffqyuhqtgqq/Build/Products/Debug-iphonesimulator/UICatalog.app
 
-Open Page By Name
+
+
+
+
 
